@@ -1,0 +1,101 @@
+"use client"
+
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+
+const topProducts = [
+  {
+    id: 1,
+    name: "Radiant Highlighter",
+    type: "Highlighter",
+    variant: "Golden Glow",
+    description: "Adds a radiant shine to your cheekbones and eyelids.",
+    price: "$22.99",
+    image: "https://shajgojgallery.com/wp-content/uploads/2024/12/IMAGIC-Lovers-Hug-Radiant-Highlighter.jpg",
+  },
+  {
+    id: 2,
+    name: "Matte Liquid Lipstick",
+    type: "Lipstick",
+    variant: "Berry Red",
+    description: "Long-lasting, highly pigmented liquid lipstick.",
+    price: "$19.50",
+    image: "https://luvit.com.bd/wp-content/uploads/2023/02/Flormar-Silk-Matte-Liquid-Lipstick-29-Warm-Rose.jpg",
+  },
+  {
+    id: 3,
+    name: "Velvet Blush",
+    type: "Blush",
+    variant: "Peach Pink",
+    description: "Soft and smooth blush with a natural finish.",
+    price: "$15.00",
+    image: "https://focallurebangladesh.com/wp-content/uploads/2025/01/51-x1hBdKgL._SL1000_.jpg",
+  },
+  {
+    id: 4,
+    name: "Precision Eyeliner",
+    type: "Eyeliner",
+    variant: "Intense Black",
+    description: "Waterproof and smudge-proof eyeliner for precise lines.",
+    price: "$13.99",
+    image: "https://www.ohsogo.com/cdn/shop/products/precision-eyeliner.png?v=1696414145&width=1500",
+  },
+]
+
+export default function TopProducts() {
+  return (
+    <section className="py-16 bg-gradient-to-b from-white to-pink-50 dark:from-gray-950 dark:to-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center text-pink-600 dark:text-pink-400 mb-12">
+          Top Products
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {topProducts.map((product) => (
+            <Card
+              key={product.id}
+              className="flex flex-col rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 dark:bg-gray-800"
+            >
+              <CardHeader className="p-0">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  width={500}
+                  height={300}
+                  className="rounded-t-2xl h-56 w-full object-cover"
+                />
+              </CardHeader>
+
+              <CardContent className="p-4 flex-1">
+                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                  {product.name}
+                </CardTitle>
+                <p className="text-sm text-pink-500 dark:text-pink-400 font-medium">
+                  {product.type} - {product.variant}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
+                  {product.description}
+                </p>
+                <p className="text-lg font-bold text-pink-600 dark:text-pink-400 mt-3">
+                  {product.price}
+                </p>
+              </CardContent>
+
+              <CardFooter className="flex flex-col sm:flex-row gap-2 p-4">
+                <Button className="bg-pink-500 hover:bg-pink-600 text-white w-full sm:w-1/2">
+                  Add to Cart
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full sm:w-1/2 dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-700"
+                >
+                  View Details
+                </Button>
+              </CardFooter>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

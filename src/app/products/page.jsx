@@ -1,114 +1,178 @@
-import React from 'react'
-import ProductCard from '../Components/ProductCard/ProductCard';
+"use client"
 
-export default function page() {
-    // --- Fake Product Data ---
-const fakeProducts = [
-  {
-    id: 'prod_001',
-    image: 'https://placehold.co/300x200/F4D7DA/262626?text=Foundation',
-    title: 'Radiant Glow Foundation',
-    variant: 'Warm Beige (30ml)',
-    description: 'Achieve a flawless, luminous complexion with our long-lasting, hydrating foundation.',
-    price: 35.00,
-  },
-  {
-    id: 'prod_002',
-    image: 'https://placehold.co/300x200/E3C2D2/262626?text=Lipstick',
-    title: 'Velvet Matte Lipstick',
-    variant: 'Ruby Red',
-    description: 'Intense color and a comfortable matte finish that lasts all day. Vegan & Cruelty-Free.',
-    price: 22.50,
-  },
-  {
-    id: 'prod_003',
-    image: 'https://placehold.co/300x200/C8BFE7/262626?text=Eyeshadow',
-    title: 'Aurora Eyeshadow Palette',
-    variant: 'Sunset Dream (12 Shades)',
-    description: 'A captivating palette with shimmering and matte shades for endless eye looks.',
-    price: 48.00,
-  },
-  {
-    id: 'prod_004',
-    image: 'https://placehold.co/300x200/D0F0C0/262626?text=Mascara',
-    title: 'Lash Amplify Mascara',
-    variant: 'Intense Black',
-    description: 'Volumize and lengthen your lashes with this smudge-proof, defining mascara.',
-    price: 19.99,
-  },
-  {
-    id: 'prod_005',
-    image: 'https://placehold.co/300x200/F8D4C0/262626?text=Blush',
-    title: 'Petal Flush Blush',
-    variant: 'Peachy Pink',
-    description: 'A silky-smooth powder blush that adds a natural, healthy flush to your cheeks.',
-    price: 28.00,
-  },
-  {
-    id: 'prod_006',
-    image: 'https://placehold.co/300x200/BEE3F8/262626?text=Highlighter',
-    title: 'Moonbeam Liquid Highlighter',
-    variant: 'Rose Gold (15ml)',
-    description: 'Liquid illuminator for a radiant, dewy glow. Buildable and blendable formula.',
-    price: 32.00,
-  },
-  {
-    id: 'prod_007',
-    image: 'https://placehold.co/300x200/F0BAD0/262626?text=Primer',
-    title: 'Pore Minimizing Primer',
-    variant: 'Clear (30ml)',
-    description: 'Create a smooth canvas for makeup, minimize pores, and prolong wear.',
-    price: 27.00,
-  },
-  {
-    id: 'prod_008',
-    image: 'https://placehold.co/300x200/F5CBA7/262626?text=Setting+Spray',
-    title: 'All-Day Setting Spray',
-    variant: 'Mist (100ml)',
-    description: 'Lock in your look for hours with this lightweight, refreshing setting spray.',
-    price: 24.00,
-  },
-  {
-    id: 'prod_009',
-    image: 'https://placehold.co/300x200/D9F7D4/262626?text=Concealer',
-    title: 'Flawless Coverage Concealer',
-    variant: 'Light Neutral (6ml)',
-    description: 'Full-coverage concealer that brightens dark circles and hides imperfections.',
-    price: 21.00,
-  },
-  {
-    id: 'prod_010',
-    image: 'https://placehold.co/300x200/FFD9EE/262626?text=Eyeliner',
-    title: 'Precision Liquid Eyeliner',
-    variant: 'Jet Black',
-    description: 'Achieve sharp, precise lines with this long-wearing, waterproof liquid eyeliner.',
-    price: 18.00,
-  },
-  {
-    id: 'prod_011',
-    image: 'https://placehold.co/300x200/F0F0B0/262626?text=Lip+Gloss',
-    title: 'Crystal Shine Lip Gloss',
-    variant: 'Clear Sparkle',
-    description: 'Non-sticky formula for a high-shine, plumped-up lip look.',
-    price: 15.50,
-  },
-  {
-    id: 'prod_012',
-    image: 'https://placehold.co/300x200/CCEEFF/262626?text=Brow+Gel',
-    title: 'Brow Sculpting Gel',
-    variant: 'Transparent',
-    description: 'Tame and define your brows for a polished, long-lasting finish.',
-    price: 16.00,
-  },
-];
+import { useEffect, useState } from "react"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+import { useRouter } from 'next/navigation'
+
+const PRODUCTS_PER_PAGE = 10
+
+export default function MakeupPage() {
+  const [products, setProducts] = useState([])
+  const [categories, setCategories] = useState([])
+  const [activeCategory, setActiveCategory] = useState("")
+  const [currentPage, setCurrentPage] = useState(1)
+  const [mounted, setMounted] = useState(false)
+  const [search, setSearch] = useState("")
+  const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true)
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("/data.json")
+        const data = await res.json()
+        setProducts(data)
+
+        const uniqueCategories = [...new Set(data.map(p => p.category).filter(Boolean))]
+        setCategories(['All', ...uniqueCategories])
+        setActiveCategory(uniqueCategories[0] || "")
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    fetchProducts()
+  }, [])
+
+  if (!mounted) return null
+
+  // Filter by category and search
+  const filteredProducts = products.filter(
+  p =>
+    (activeCategory === "All" || p.category === activeCategory) &&
+    (p.name.toLowerCase().includes(search.toLowerCase()) ||
+      (p.brand && p.brand.toLowerCase().includes(search.toLowerCase())))
+)
+
+  // Pagination logic
+  const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
+  const paginatedProducts = filteredProducts.slice(
+    (currentPage - 1) * PRODUCTS_PER_PAGE,
+    currentPage * PRODUCTS_PER_PAGE
+  )
+
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category)
+    setCurrentPage(1) // reset page when category changes
+  }
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-4">Our Products</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {fakeProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
+    <div className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+
+      {/* --- Hero --- */}
+      <section className="bg-gradient-to-r from-pink-50 via-white to-pink-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">
+            Explore Our Makeup Collection
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+            Browse premium beauty products by category.
+          </p>
+        </div>
+      </section>
+
+      {/* --- Search --- */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <input
+          type="text"
+          placeholder="Search products..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="w-full md:w-1/2 px-4 py-3 rounded-full border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-400"
+        />
+      </div>
+
+      {/* --- Categories --- */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-wrap gap-3">
+        {categories.map(cat => (
+          <Button
+            key={cat}
+            variant={cat === activeCategory ? "default" : "outline"}
+            className="capitalize"
+            onClick={() => handleCategoryChange(cat)}
+          >
+            {cat}
+          </Button>
         ))}
       </div>
+
+      {/* --- Products --- */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {paginatedProducts.map(product => (
+          <Card key={product.id} className="flex flex-col rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 dark:bg-gray-800">
+            <CardHeader className="p-0">
+              <img
+                src={product.image_link || product.api_featured_image}
+                alt={product.name}
+                className="rounded-t-2xl h-56 w-full object-cover"
+              />
+            </CardHeader>
+            <CardContent className="p-4 flex-1">
+              <CardTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                {product.name}
+              </CardTitle>
+              <p className="text-sm text-pink-500 dark:text-pink-400 font-medium">
+                {product.category} - {product.brand}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
+                {product.description?.slice(0, 70)}...
+              </p>
+              <p className="text-lg font-bold text-pink-600 dark:text-pink-400 mt-3">
+                {product.price_sign || "$"}{product.price}
+              </p>
+            </CardContent>
+            <CardFooter className="flex flex-col sm:flex-row gap-2 p-4">
+              <Button className="bg-pink-500 hover:bg-pink-600 text-white w-full sm:w-1/2">
+                Add to Cart
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full sm:w-1/2 dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-700"
+                onClick={() => router.push(`/products/${product.id}`)}
+              >
+                View Details
+              </Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+
+      {/* --- Pagination --- */}
+      {totalPages > 1 && (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex justify-center">
+          <Pagination currentpage={currentPage} totalpages={totalPages}>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious
+                  href="#"
+                  onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+                />
+              </PaginationItem>
+              {Array.from({ length: totalPages }, (_, i) => (
+                <PaginationItem key={i + 1} page={i + 1}>
+                  <PaginationLink href="#" onClick={() => setCurrentPage(i + 1)}>
+                    {i + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              <PaginationItem>
+                <PaginationNext
+                  href="#"
+                  onClick={() => currentPage < totalPages && setCurrentPage(currentPage + 1)}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
     </div>
   )
 }

@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./Components/ThemeProvider/ThemeProvider";
 import Navbar from "./Components/Navbar/Navbar";
+import Footer from "./Components/Footer/Footer";
 
 export const metadata = {
   title: "Create Next App",
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
           >
             <Navbar />
             {children}
+            <Footer />
           </ThemeProvider>
       </body>
     </html>
