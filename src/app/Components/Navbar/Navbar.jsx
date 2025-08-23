@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react"
 import { ModeToggle } from "../ThemeToggler/ThemeToggler"
 import {
@@ -7,6 +9,7 @@ import {
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Menu } from "lucide-react"
+import UserMenu from "../UserMenu/UserMenu"
 
 export default function Navbar() {
   const navLinks = [
@@ -61,6 +64,7 @@ export default function Navbar() {
 
         {/* Right Section */}
         <div className="flex items-center gap-x-3">
+          <UserMenu />
           <ModeToggle />
 
           {/* Mobile Menu */}

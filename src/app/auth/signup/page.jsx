@@ -12,10 +12,12 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log("Signing up:", { userName, email, password });
     try{
         const res = await fetch("/api/auth/signup", {
@@ -28,6 +30,8 @@ export default function SignUp() {
         router.push("/auth/signin");}
     } catch (error) {
         console.error("Error signing up:", error);
+    }finally {
+      setLoading(false)
     }
 
     
@@ -99,7 +103,7 @@ export default function SignUp() {
                 type="submit"
                 className="w-full bg-pink-500 hover:bg-pink-600 text-white"
               >
-                Sign Up
+                 {loading ? "Creating account..." : "Sign Up"}
               </Button>
             </form>
             <p className="text-sm text-center mt-4 text-gray-600">
