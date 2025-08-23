@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/sheet"
 import { Button } from "@/components/ui/button"
 import { Menu, ChevronDown } from "lucide-react"
-import UserMenu from "../UserMenu/UserMenu"
+import UserMenu from "./UserMenu"
 import Link from "next/link"
 
 export default function Navbar() {
