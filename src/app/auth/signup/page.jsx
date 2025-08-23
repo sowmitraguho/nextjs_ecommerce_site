@@ -39,26 +39,26 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-white dark:bg-gray-900">
       {/* Left side - full image */}
-      <div className="relative w-1/2 hidden lg:block">
+      <div className="relative flex-1 hidden lg:block">
         <img
-          src="https://i.ibb.co/nNX9qySF/register.png" 
+          src="https://media.istockphoto.com/id/1305268276/vector/registration-abstract-concept-vector-illustration.jpg?s=612x612&w=0&k=20&c=nfvUbHjcNDVIPdWkaxGx0z0WZaAEuBK9SyG-aIqg2-0=" 
           alt="Makeup Shop"
           
-          className="object-cover"
+          className="min-h-screen"
           
         />
       </div>
 
       {/* Right side - form */}
       <div className="flex w-full lg:w-1/2 items-center justify-center p-8 bg-white dark:bg-gray-900">
-        <Card className="w-full max-w-md shadow-xl rounded-2xl">
+        <Card className="w-full max-w-lg shadow-xl rounded-2xl bg-white dark:bg-gray-900 border border-pink-500">
           <CardHeader>
             <CardTitle className="text-2xl font-bold text-center">
               Create Your Account
             </CardTitle>
-            <p className="text-sm text-gray-600 text-center mt-2">
+            <p className="text-sm text-gray-600 dark:text-gray-200 text-center mt-2">
               Join our makeup community and get access to exclusive offers, tips,
               and the latest beauty trends.
             </p>

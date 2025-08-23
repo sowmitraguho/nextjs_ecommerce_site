@@ -49,7 +49,7 @@ export default function LoginForm() {
 
   return (
      <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-2xl font-bold mb-6">Sign In</h2>
+          <h2 className="bg-gradient-to-r from-pink-400 to-violet-600 bg-clip-text text-transparent text-2xl font-bold mb-6">Sign In</h2>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 my-4">
             <div>
               <Label htmlFor="email" className="mb-1">Email</Label>
@@ -75,7 +75,7 @@ export default function LoginForm() {
               />
             </div>
 
-            <Button type="submit" className="w-full">{loading ? (
+            <Button type="submit" className="bg-pink-500 hover:bg-pink-600 text-white md:w-full w-1/2">{loading ? (
               <>
                 <Loader2 className="h-5 w-5 animate-spin" />
                 Signing in...

@@ -55,55 +55,11 @@ export default function SignIn() {
             src="https://i.ibb.co/nNX9qySF/register.png"
             alt="Makeup Shop"
 
-            className="object-cover"
+            className="object-cover h-full w-full"
           />
         </div>
 
-        {/* Right Form */}
-        {/* <div className="w-full md:w-1/2 p-8">
-          <h2 className="text-2xl font-bold mb-6">Sign In</h2>
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <div>
-              <Label htmlFor="email" className="mb-1">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                value={form.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <div>
-              <Label htmlFor="password" className="mb-1">Password</Label>
-              <Input
-                id="password"
-                type="password"
-                placeholder="Enter your password"
-                value={form.password}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            <Button type="submit" className="w-full">{loading ? (
-              <>
-                <Loader2 className="h-5 w-5 animate-spin" />
-                Signing in...
-              </>
-            ) : (
-              "Sign In"
-            )}</Button>
-          </form>
-          {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
-          <p className="text-sm text-center mt-4 text-gray-600">
-              Do not have an account?{" "}
-              <a href="/auth/signup" className="text-pink-500 hover:underline">
-                Sign Up
-              </a>
-            </p>
-        </div> */}
+       
         <LoginForm />
       </div>
     </div>

@@ -81,7 +81,7 @@ export default function MakeupPage() {
       </section>
 
       {/* --- Search --- */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto flex items-center justify-center px-4 sm:px-6 lg:px-8 py-6">
         <input
           type="text"
           placeholder="Search products..."
