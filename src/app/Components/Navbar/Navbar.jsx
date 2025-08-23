@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button"
 import { Menu } from "lucide-react"
 import UserMenu from "../UserMenu/UserMenu"
+import Link from "next/link"
 
 export default function Navbar() {
   const navLinks = [
@@ -17,12 +18,12 @@ export default function Navbar() {
     { name: "Shop", href: "/products" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "Add A Product", href: "/dashboard/addProduct" },
+    { name: "Dashboard", href: "/dashboard" },
   ]
 
   return (
     <nav className="
-      bg-gradient-to-r from-pink-100 via-white to-pink-50 
+      bg-gradient-to-r from-pink-100 via-white to-pink-50
       dark:from-gray-900 dark:via-gray-950 dark:to-gray-900
       border-b border-pink-200 dark:border-gray-800
       shadow-sm sticky top-0 z-50
@@ -30,7 +31,7 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between h-16">
         {/* Logo */}
         <div className="flex items-center">
-          <a
+          <Link
             href="/"
             className="
               text-2xl font-extrabold tracking-wide
@@ -39,13 +40,13 @@ export default function Navbar() {
             "
           >
             AuraBeaute
-          </a>
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               href={link.href}
               className="
@@ -59,7 +60,7 @@ export default function Navbar() {
               "
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -74,12 +75,9 @@ export default function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="
-                  md:hidden text-pink-600 hover:bg-pink-100
-                  dark:text-pink-400 dark:hover:bg-gray-800
-                "
+                className="md:hidden text-pink-600 hover:bg-pink-100 dark:text-pink-400 dark:hover:bg-gray-800"
               >
-                <Menu className="h-6 w-6" />
+                
                 <span className="sr-only">Open mobile menu</span>
               </Button>
             </SheetTrigger>
@@ -93,7 +91,7 @@ export default function Navbar() {
             >
               <nav className="flex flex-col gap-y-6 px-4">
                 {navLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.name}
                     href={link.href}
                     className="
@@ -104,7 +102,7 @@ export default function Navbar() {
                     "
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
               </nav>
             </SheetContent>
@@ -113,4 +111,4 @@ export default function Navbar() {
       </div>
     </nav>
   )
-} 
+}

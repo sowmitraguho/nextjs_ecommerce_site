@@ -1,13 +1,13 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./Components/ThemeProvider/ThemeProvider";
-import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import { Toaster } from "@/components/ui/sonner"
 import { getServerSession } from "next-auth/next";
 //import { authOptions } from "./api/auth/[...nextauth]";
 import MySessionProvider from "./providers/SessionProvider";
 import { authOptions } from "./api/auth/[...nextauth]/route";
+import Navbar from "./Components/Navbar/Navbar";
 //import { authOptions } from "../../pages/api/auth/[...nextauth]";
 
 
@@ -28,8 +28,8 @@ export default async function RootLayout({ children }) {
             disableTransitionOnChange
           >
           <MySessionProvider session={session}>
-            <Navbar />
-            {children}
+           <Navbar />
+           <main>{children}</main>
             <Toaster />
             <Footer />
         </MySessionProvider>
