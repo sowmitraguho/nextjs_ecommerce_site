@@ -3,40 +3,47 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { ShoppingCart } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+//import { useRouter } from 'next/router';
 import React from 'react'
 
 export default function ProductCard({ product }) {
+  const router = useRouter(); 
   return (
-    <Card className="flex flex-col h-full rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-      <img
-        src={product.image}
-        alt={product.title}
-        className="w-full h-48 object-cover object-center"
-        // Fallback for broken images
-        onError={(e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/300x200/CCCCCC/666666?text=No+Image'; }}
-      />
-      <CardHeader className="p-4 pb-2 flex-grow">
-        <CardTitle className="text-lg font-semibold leading-tight">{product.title}</CardTitle>
-        <CardDescription className="text-sm text-muted-foreground mt-1">
-          {product.variant}
-        </CardDescription>
-        <p className="text-xs text-muted-foreground mt-2 line-clamp-2">
-          {product.description}
-        </p>
-      </CardHeader>
-      <CardContent className="p-4 pt-0">
-        <p className="text-xl font-bold text-foreground">
-          ${product.price.toFixed(2)}
-        </p>
-      </CardContent>
-      <CardFooter className="flex flex-col gap-2 p-4 pt-0">
-        <Button className="w-full flex items-center gap-2">
-          <ShoppingCart className="h-4 w-4" /> Add to Cart
-        </Button>
-        <Button variant="outline" className="w-full">
-          View Details
-        </Button>
-      </CardFooter>
-    </Card>
+    <Card key={product.id} className="flex flex-col rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 dark:bg-gray-800">
+            <CardHeader className="p-0">
+              <img
+                src={product.image_link || product.api_featured_image}
+                alt={product.name}
+                className="rounded-t-2xl h-56 w-full object-cover"
+              />
+            </CardHeader>
+            <CardContent className="p-4 flex-1">
+              <CardTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                {product.name}
+              </CardTitle>
+              <p className="text-sm text-pink-500 dark:text-pink-400 font-medium">
+                {product.category} - {product.brand}
+              </p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
+                {product.description?.slice(0, 70)}...
+              </p>
+              <p className="text-lg font-bold text-pink-600 dark:text-pink-400 mt-3">
+                {product.price_sign || "$"}{product.price}
+              </p>
+            </CardContent>
+            <CardFooter className="flex flex-col sm:flex-row gap-2 p-4">
+              <Button className="bg-pink-500 hover:bg-pink-600 text-white w-full sm:w-1/2">
+                Add to Cart
+              </Button>
+              <Button
+                variant="outline"
+                className="w-full sm:w-1/2 dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-700"
+                onClick={() => router.push(`/products/${product._id}`)}
+              >
+                View Details
+              </Button>
+            </CardFooter>
+          </Card>
   );
 }

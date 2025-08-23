@@ -10,8 +10,9 @@ export async function GET() {
     const db = client.db("makeupshop"); // replace with your DB name
     const products = await db.collection("products").find({}).toArray();
     const topProducts = await db.collection("topProducts").find({}).toArray();
+    const featureProducts = await db.collection("featureProducts").find({}).toArray();
 
-    return new Response(JSON.stringify({ products, topProducts }), {
+    return new Response(JSON.stringify({ products, topProducts, featureProducts }), {
       status: 200,
       headers: { "Content-Type": "application/json" },
     });

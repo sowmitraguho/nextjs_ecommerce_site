@@ -137,7 +137,7 @@ export default function MakeupPage() {
               <Button
                 variant="outline"
                 className="w-full sm:w-1/2 dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-700"
-                onClick={() => router.push(`/products/${product.id}`)}
+                onClick={() => router.push(`/products/${product._id}`)}
               >
                 View Details
               </Button>

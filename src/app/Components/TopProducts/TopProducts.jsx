@@ -3,6 +3,7 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react";
+import ProductCard from "../ProductCard/ProductCard";
 
 // const topProducts = [
 //   {
@@ -68,48 +69,7 @@ export default function TopProducts() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {topProducts.map((product) => (
-            <Card
-              key={product.id}
-              className="flex flex-col rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 dark:bg-gray-800"
-            >
-              <CardHeader className="p-0">
-                <img
-                  src={product.image_link}
-                  alt={product.name}
-                  width={500}
-                  height={300}
-                  className="rounded-t-2xl h-56 w-full object-cover"
-                />
-              </CardHeader>
-
-              <CardContent className="p-4 flex-1">
-                <CardTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-                  {product.name}
-                </CardTitle>
-                <p className="text-sm text-pink-500 dark:text-pink-400 font-medium">
-                  {product.type} - {product.variant}
-                </p>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mt-2">
-                  {product.description}
-                </p>
-                <p className="text-lg font-bold text-pink-600 dark:text-pink-400 mt-3">
-                  {product.price}
-                </p>
-              </CardContent>
-
-              <CardFooter className="flex flex-col sm:flex-row gap-2 p-4">
-                <Button className="bg-pink-500 hover:bg-pink-600 text-white w-full sm:w-1/2">
-                  Add to Cart
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full sm:w-1/2 dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-700"
-                >
-                  View Details
-                </Button>
-              </CardFooter>
-            </Card>
+          {topProducts.map((product) => (<ProductCard key={product._id} product={product} />
           ))}
         </div>
       </div>

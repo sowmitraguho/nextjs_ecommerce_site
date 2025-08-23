@@ -1,23 +1,31 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import { useParams, useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
 
 export default function page({params}) {
-  const { id } = params;  
+  const { id } = use(params);  
   const router = useRouter()
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     const fetchProduct = async () => {
+      //console.log('Fetching product with id:', id, typeof(id));
       try {
-        const res = await axios.get("/api/products")
+        const res = await axios.get("/api/products");
         const data = res.data
-        const prod = data.find((p) => p.id === parseInt(id))
+        //console.log(data.products);
+        let prod = data?.products ? data.products.find((p) => p._id.toString() === id) : null;
+        if (!prod) {
+          prod = data?.topProducts?.find((p) => p._id.toString() === id) || null;
+        }
+        if (!prod) {
+          prod = data?.featureProducts?.find((p) => p._id.toString() === id) || null;
+        }
         setProduct(prod)
       } catch (err) {
         console.error(err)
