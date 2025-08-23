@@ -4,11 +4,11 @@ import { ThemeProvider } from "./Components/ThemeProvider/ThemeProvider";
 import Footer from "./Components/Footer/Footer";
 import { Toaster } from "@/components/ui/sonner"
 import { getServerSession } from "next-auth/next";
-//import { authOptions } from "./api/auth/[...nextauth]";
 import MySessionProvider from "./providers/SessionProvider";
 import { authOptions } from "./api/auth/[...nextauth]/route";
-import Navbar from "./Components/Navbar/Navbar";
-//import { authOptions } from "../../pages/api/auth/[...nextauth]";
+import NavbarNew from "./Components/NavbarNew/NavbarNew";
+
+
 
 
 export const metadata = {
@@ -28,7 +28,7 @@ export default async function RootLayout({ children }) {
             disableTransitionOnChange
           >
           <MySessionProvider session={session}>
-           <Navbar />
+           <NavbarNew />
            <main>{children}</main>
             <Toaster />
             <Footer />
