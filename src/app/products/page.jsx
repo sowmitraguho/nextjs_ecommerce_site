@@ -28,11 +28,12 @@ export default function MakeupPage() {
     setMounted(true)
     const fetchProducts = async () => {
       try {
-        const res = await fetch("/data.json")
+        const res = await fetch("/api/products")
         const data = await res.json()
-        setProducts(data)
+        console.log('data', data);
+        setProducts(data.products)
 
-        const uniqueCategories = [...new Set(data.map(p => p.category).filter(Boolean))]
+        const uniqueCategories = [...new Set(data.products.map(p => p.category).filter(Boolean))]
         setCategories(['All', ...uniqueCategories])
         setActiveCategory(uniqueCategories[0] || "")
       } catch (err) {

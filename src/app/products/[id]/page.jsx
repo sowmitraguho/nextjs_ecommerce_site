@@ -15,7 +15,7 @@ export default function page({params}) {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get("/data.json")
+        const res = await axios.get("/api/products")
         const data = res.data
         const prod = data.find((p) => p.id === parseInt(id))
         setProduct(prod)

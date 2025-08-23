@@ -37,7 +37,7 @@ export default function LoginForm() {
       setError(res.error);
     } else {
       toast.success("Signed in successfully!");
-      form.reset();
+      e.target.reset();
       router.push("/");
     }
   } catch (err) {
