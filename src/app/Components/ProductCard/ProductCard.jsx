@@ -2,13 +2,18 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import { useCart } from '@/Context/CartContext';
 import { ShoppingCart } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 //import { useRouter } from 'next/router';
 import React from 'react'
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 export default function ProductCard({ product }) {
-  const router = useRouter(); 
+    const router = useRouter(); 
+  
+
   return (
     <Card key={product.id} className="flex flex-col rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 dark:bg-gray-800">
             <CardHeader className="p-0">
@@ -33,9 +38,7 @@ export default function ProductCard({ product }) {
               </p>
             </CardContent>
             <CardFooter className="flex flex-col sm:flex-row gap-2 p-4">
-              <Button className="bg-pink-500 hover:bg-pink-600 text-white w-full sm:w-1/2">
-                Add to Cart
-              </Button>
+              <AddToCartButton product={product} />
               <Button
                 variant="outline"
                 className="w-full sm:w-1/2 dark:border-gray-400 dark:text-gray-200 dark:hover:bg-gray-700"

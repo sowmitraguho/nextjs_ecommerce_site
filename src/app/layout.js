@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth/next";
 import MySessionProvider from "./providers/SessionProvider";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import NavbarNew from "./Components/NavbarNew/NavbarNew";
+import { CartProvider } from "@/Context/CartContext";
 
 
 
@@ -28,11 +29,13 @@ export default async function RootLayout({ children }) {
             disableTransitionOnChange
           >
           <MySessionProvider session={session}>
-           <NavbarNew />
-           <main>{children}</main>
-            <Toaster />
-            <Footer />
-        </MySessionProvider>
+            <CartProvider>
+              <NavbarNew />
+              <main>{children}</main>
+              <Toaster />
+              <Footer />
+            </CartProvider>
+          </MySessionProvider>
         </ThemeProvider>
       </body>
     </html>

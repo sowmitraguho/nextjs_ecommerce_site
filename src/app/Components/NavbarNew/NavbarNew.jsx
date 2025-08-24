@@ -11,10 +11,11 @@ import { Button } from "@/components/ui/button"
 import { Menu, ChevronDown } from "lucide-react"
 import UserMenu from "../UserMenu/UserMenu"
 import Link from "next/link"
+import Cart from "../Cart/Cart"
 
 export default function NavbarNew() {
-  const [dashboardOpen, setDashboardOpen] = useState(false);
-
+ const [open, setOpen] = useState(false);
+  
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Shop", href: "/products" },
@@ -80,11 +81,12 @@ export default function NavbarNew() {
 
         {/* Right Section */}
         <div className="flex items-center gap-x-3">
+          <Cart />
           <UserMenu />
           <ModeToggle />
 
           {/* Mobile Menu */}
-          <Sheet>
+          <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button
                 variant="ghost"
@@ -101,7 +103,7 @@ export default function NavbarNew() {
             <SheetContent
               side="right"
               className="
-                w-full sm:w-[280px] flex flex-col pt-12
+                w-fit sm:w-[280px] h-fit max-h-screen flex flex-col px-6 py-12
                 bg-gradient-to-b from-white to-pink-50
                 dark:from-gray-900 dark:to-gray-950
               "
@@ -115,25 +117,11 @@ export default function NavbarNew() {
                         text-gray-700 hover:text-pink-600
                         dark:text-gray-300 dark:hover:text-pink-400
                         transition-colors flex justify-between items-center"
-                      onClick={() => setDashboardOpen(!dashboardOpen)}
+                        onClick={() => setOpen(!open)}
                     >
                       {link.name} {link.submenu && <ChevronDown className="h-4 w-4" />}
                     </Link>
 
-                    {/* Mobile Submenu */}
-                    {link.submenu && dashboardOpen && (
-                      <div className="ml-4 mt-1 flex flex-col gap-2">
-                        {link.submenu.map((sub) => (
-                          <Link
-                            key={sub.name}
-                            href={sub.href}
-                            className="text-gray-700 dark:text-gray-300 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
-                          >
-                            {sub.name}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 ))}
               </nav>
