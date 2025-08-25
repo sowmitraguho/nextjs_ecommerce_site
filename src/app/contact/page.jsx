@@ -7,7 +7,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/f
 export default function page() {
   return (
     <section
-      className="px-4 sm:px-6 lg:px-8
+      className="px-4 sm:px-6 lg:px-8 py-6
                  bg-gradient-to-r from-pink-100 via-pink-50 to-white
                  dark:from-gray-900 dark:via-gray-950 dark:to-gray-900"
     >
@@ -24,13 +24,13 @@ export default function page() {
               {/* --- Contact Details --- */}
               <div className="space-y-2">
                 <p>
-                  <span className="font-semibold">Address:</span> 123 Beauty St, Glam City, CA 90210
+                  <span className="font-semibold">Address:</span> 11/12, Mirpur, Dhaka, Bangladesh
                 </p>
                 <p>
-                  <span className="font-semibold">Email:</span> support@makeup.com
+                  <span className="font-semibold">Email:</span> support@aurabeaute.com
                 </p>
                 <p>
-                  <span className="font-semibold">Phone:</span> +1 234 567 890
+                  <span className="font-semibold">Phone:</span> +8801551300300
                 </p>
               </div>
 
@@ -84,7 +84,7 @@ export default function page() {
           <img
             src="https://w0.peakpx.com/wallpaper/73/788/HD-wallpaper-pretty-woman-model-girl-makeup-telephone.jpg"
             alt="Contact us illustration"
-            className=" shadow-lg w-full min-h-screen object-cover"
+            className=" shadow-lg w-full object-cover"
           />
         </div>
       </div>

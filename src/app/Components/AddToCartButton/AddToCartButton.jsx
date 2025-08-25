@@ -14,7 +14,7 @@ export default function AddToCartButton({ product }) {
         if (!session) {
             router.push("/auth/signin");
         } else {
-            addToCart();
+            addToCart(product);
         }
     };
     return (

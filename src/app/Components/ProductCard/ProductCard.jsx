@@ -2,9 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { useCart } from '@/Context/CartContext';
-import { ShoppingCart } from 'lucide-react';
-import { useSession } from 'next-auth/react';
+
 import { useRouter } from 'next/navigation';
 //import { useRouter } from 'next/router';
 import React from 'react'

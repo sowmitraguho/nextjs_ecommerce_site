@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import InviteForRegistration from "../Components/InviteForRegistration/InviteForRegistration"
 
 export default function AboutPage() {
     return (
@@ -89,7 +90,7 @@ export default function AboutPage() {
             </section>
 
             {/* --- Call to Action Section --- */}
-            <section className=" py-16 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-r from-pink-100 via-pink-50 to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 bg-[url('https://img.freepik.com/premium-photo/set-decorative-cosmetics-brushes-black_106029-725.jpg')] bg-cover bg-center bg-no-repeat relative">
+            {/* <section className=" py-16 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-r from-pink-100 via-pink-50 to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 bg-[url('https://img.freepik.com/premium-photo/set-decorative-cosmetics-brushes-black_106029-725.jpg')] bg-cover bg-center bg-no-repeat relative">
                 <div className="absolute inset-0 bg-black/10 dark:bg-black/40"></div>
                 <div className="relative z-10 max-w-2xl mx-auto space-y-6">
                     <h2 className="text-3xl sm:text-4xl font-bold text-pink-600 dark:text-pink-400 mb-4">
@@ -102,7 +103,8 @@ export default function AboutPage() {
                         Subscribe Now
                     </Button>
                 </div>
-            </section>
+            </section> */}
+            <InviteForRegistration />
         </div>
     )
 }

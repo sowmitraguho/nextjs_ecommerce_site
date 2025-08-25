@@ -5,8 +5,7 @@ import { useParams, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import axios from "axios"
 import ProductDetailsCard from "./Components/ProductDetailsCard"
-import { useCart } from "@/Context/CartContext"
-import { useSession } from "next-auth/react"
+
 
 
 export default function page({params}) {

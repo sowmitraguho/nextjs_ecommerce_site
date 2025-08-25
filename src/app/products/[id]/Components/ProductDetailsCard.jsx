@@ -1,22 +1,23 @@
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import AddToCartButton from '@/app/Components/AddToCartButton/AddToCartButton'
 
 export default function ProductDetailsCard({ product }) {
   return (
-    <Card className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl shadow-md dark:bg-gray-800">
-        {/* Product Image */}
-        <CardHeader className="flex-1 p-0">
-          <img
-            src={product.image_link || product.api_featured_image}
-            alt={product.name}
-            className="rounded-2xl w-full h-auto object-cover"
-          />
-        </CardHeader>
+    <Card className="flex flex-col md:flex-row gap-6 p-6 rounded-2xl shadow-md bg-pink-50 dark:bg-gray-800">
+      {/* Product Image */}
+      <CardHeader className="flex-1 p-0">
+        <img
+          src={product.image_link || product.api_featured_image}
+          alt={product.name}
+          className="rounded-2xl w-full h-auto object-cover"
+        />
+      </CardHeader>
 
+      <div className="flex-1 flex flex-col justify-between pb-6">
         {/* Product Details */}
-        <CardContent className="flex-1">
+        <CardContent >
           <CardTitle className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
             {product.name}
           </CardTitle>
@@ -63,14 +64,18 @@ export default function ProductDetailsCard({ product }) {
             </div>
           )}
 
-          <div className="flex flex-wrap gap-4 mt-6">
-            <Button className="px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-full"
+
+        </CardContent>
+        <CardFooter className='flex-end'>
+          <div className="flex gap-4 mt-6 ">
+            <Button className="bg-pink-500 hover:bg-pink-600 text-white w-full sm:w-1/2"
             >
               Buy Now
             </Button>
             <AddToCartButton product={product} />
           </div>
-        </CardContent>
-      </Card>
+        </CardFooter>
+      </div>
+    </Card>
   )
 }

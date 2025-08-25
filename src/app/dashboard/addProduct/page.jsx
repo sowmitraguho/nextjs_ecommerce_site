@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, redirect } from "next/navigation";
+import { toast } from "sonner";
+
 
 export default function Page() {
   const { data: session } = useSession();
@@ -13,7 +15,7 @@ export default function Page() {
     price: "",
     price_sign: "",
     currency: "",
-    image_link: "",
+    //image_link: "",
     product_link: "",
     website_link: "",
     description: "",
@@ -23,10 +25,31 @@ export default function Page() {
     tag_list: "",
     product_colors: "",
   });
+  const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
 
   if (!session) {
     redirect("/auth/signin"); // protect route
   }
+
+  // image upload
+  const handleImageChange = async (e) => {
+    setImageFile(e.target.files[0]);
+    const imgFormData = new FormData();
+    imgFormData.append("image", e.target.files[0]);
+    try {
+      const response = await axios.post(
+        `https://api.imgbb.com/1/upload?key=${
+          import.meta.env.VITE_imgbbApiKey
+        }`,
+        imgFormData
+      );
+      if (!response) return;
+      setImageUrl(response.data.data.display_url);
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -37,6 +60,7 @@ export default function Page() {
 
     const payload = {
       ...formData,
+      image_link: imageUrl,
       tag_list: formData.tag_list.split(",").map((tag) => tag.trim()),
       product_colors: formData.product_colors.split(",").map((color) => ({
         hex_value: color.split("|")[0]?.trim(),
@@ -65,7 +89,7 @@ export default function Page() {
     price: "e.g. 15.99",
     price_sign: "e.g. $",
     currency: "e.g. USD",
-    image_link: "Paste product image URL",
+    //image_link: "Paste product image URL",
     product_link: "Paste product detail link",
     website_link: "Paste brand website",
     description: "Short description of the product",
@@ -77,8 +101,8 @@ export default function Page() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto px-6 py-16">
-      <h1 className="text-3xl font-bold mb-10 text-center text-gray-900 dark:text-gray-100">
+    <section className="max-w-7xl mx-auto my-12 px-6 py-16 bg-pink-100 dark:bg-gray-900 rounded-sm">
+      <h1 className="bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent text-3xl font-bold mb-10 text-center">
         Add New Product
       </h1>
 
@@ -90,7 +114,7 @@ export default function Page() {
           <div key={key} className="flex flex-col">
             <label
               htmlFor={key}
-              className="capitalize font-medium mb-1 text-gray-700 dark:text-gray-300"
+              className="capitalize font-medium mb-1 text-pink-500 dark:text-pink-300"
             >
               {key.replace("_", " ")}:
             </label>
@@ -117,6 +141,17 @@ export default function Page() {
             )}
           </div>
         ))}
+        {/* Image Upload */}
+            <div>
+              <label className="capitalize font-medium mb-1 text-pink-500 dark:text-pink-300">Upload Your Image</label>
+              <input
+                className="border border-gray-300 p-2 rounded-md w-full dark:border-gray-700 file:mr-4 file:py-2 file:px-4 file:border file:border-pink-500 file:rounded-l-md file:text-sm file:font-semibold file:bg-pink-50 file:text-pink-700 hover:file:bg-violet-100"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                required
+              />
+            </div>
 
         <div className="md:col-span-2 flex justify-center mt-6">
           <button
@@ -127,6 +162,6 @@ export default function Page() {
           </button>
         </div>
       </form>
-    </div>
+    </section>
   );
 }
