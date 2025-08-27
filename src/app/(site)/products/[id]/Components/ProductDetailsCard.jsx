@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import AddToCartButton from '@/app/Components/AddToCartButton/AddToCartButton'
+import AddToCartButton from '@/app/(site)/Components/AddToCartButton/AddToCartButton'
 
 export default function ProductDetailsCard({ product }) {
   return (
