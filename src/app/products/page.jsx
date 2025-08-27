@@ -66,22 +66,22 @@ export default function MakeupPage() {
   }
 
   return (
-    <div className="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100">
+    <div className="bg-gradient-to-r from-pink-200 via-pink-100 to-pink-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900   text-gray-900 dark:text-gray-100">
 
       {/* --- Hero --- */}
-      <section className="bg-gradient-to-r from-pink-50 via-white to-pink-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 py-16">
+      <section className="bg-gradient-to-r from-pink-200 via-pink-100 to-pink-50 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 text-pink-400">
             Explore Our Makeup Collection
           </h1>
-          <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl dark:text-pink-200 max-w-2xl mx-auto text-pink-700">
             Browse premium beauty products by category.
           </p>
         </div>
       </section>
 
       {/* --- Search --- */}
-      <div className="max-w-7xl mx-auto flex items-center justify-center px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto flex items-center justify-center py-6 ">
         <input
           type="text"
           placeholder="Search products..."
@@ -106,7 +106,7 @@ export default function MakeupPage() {
       </div>
 
       {/* --- Products --- */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
         {paginatedProducts.map(product => ( <ProductCard key={product._id} product={product} />
         ))}
       </div>

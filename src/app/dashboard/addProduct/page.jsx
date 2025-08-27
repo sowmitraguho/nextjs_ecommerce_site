@@ -101,8 +101,8 @@ export default function Page() {
   };
 
   return (
-    <section className="max-w-7xl mx-auto my-12 px-6 py-16 bg-pink-100 dark:bg-gray-900 rounded-sm">
-      <h1 className="bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent text-3xl font-bold mb-10 text-center">
+    <section className="max-w-7xl mx-auto px-6 py-12 bg-pink-100 dark:bg-gray-900 rounded-sm">
+      <h1 className="bg-gradient-to-r from-pink-400 to-pink-600 bg-clip-text text-transparent text-4xl font-extrabold mb-10 text-center">
         Add New Product
       </h1>
 

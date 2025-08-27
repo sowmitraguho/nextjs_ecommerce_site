@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useCart } from "@/Context/CartContext";
 import { useRouter } from "next/navigation";
+import { FaCartShopping } from "react-icons/fa6";
 
 export default function UserCart() {
   const { cart, removeFromCart } = useCart();
@@ -18,7 +19,7 @@ export default function UserCart() {
       </h1>
 
       {cart.length === 0 ? (
-        <p className="text-gray-600 dark:text-gray-400">Your cart is empty 🛒</p>
+        <p className=" dark:text-gray-400 flex items-end justify-center gap-4 text-3xl text-pink-500"><FaCartShopping />Your cart is empty </p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {cart.map((item, index) => (

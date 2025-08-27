@@ -33,8 +33,10 @@ export default async function RootLayout({ children }) {
             <ProductProvider>
               <CartProvider>
                 <NavbarNew />
-                <main>{children}</main>
-                <Toaster />
+                <div className="mx-auto max-w-screen-2xl bg-gradient-to-r from-pink-100 via-pink-50 to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 min-h-screen">
+                  <main>{children}</main>
+                  <Toaster />
+                </div>
                 <Footer />
               </CartProvider>
             </ProductProvider>

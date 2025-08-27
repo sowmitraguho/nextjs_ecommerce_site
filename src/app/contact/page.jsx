@@ -11,7 +11,7 @@ export default function page() {
                  bg-gradient-to-r from-pink-100 via-pink-50 to-white
                  dark:from-gray-900 dark:via-gray-950 dark:to-gray-900"
     >
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+      <div className="max-w-7xl px-4  mx-auto flex flex-col lg:flex-row items-center gap-12">
         {/* --- Left Section: Contact Info & Message Form --- */}
         <div className="lg:flex-1 w-full space-y-8">
           <Card className="rounded-2xl shadow-lg bg-pink-50 dark:bg-gray-800 p-8">

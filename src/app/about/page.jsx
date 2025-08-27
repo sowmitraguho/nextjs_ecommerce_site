@@ -13,7 +13,7 @@ export default function AboutPage() {
                 <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 text-pink-600 dark:text-pink-400">
                     About Us
                 </h1>
-                <p className="text-lg sm:text-xl max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
+                <p className="text-lg sm:text-xl max-w-5xl mx-auto text-pink-800 dark:text-pink-100">
                     Discover who we are and why we’re passionate about providing premium beauty products
                     for everyone. Our mission is to empower confidence and creativity.
                 </p>
