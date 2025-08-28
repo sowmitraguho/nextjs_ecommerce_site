@@ -39,6 +39,7 @@ export default async function DashboardLayout({ children }) {
                     <nav className="flex flex-col gap-3">
                       <a href="/dashboard" className="hover:text-pink-400">Dashboard Home</a>
                       <a href="/dashboard/addProduct" className="hover:text-pink-400">Add Product</a>
+                      <a href="/dashboard/updateProduct" className="hover:text-pink-400">Update Product</a>
                       {/* <a href="/dashboard/UserCart" className="hover:text-pink-400">User Cart</a> */}
                     </nav>
                   </aside>

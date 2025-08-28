@@ -21,7 +21,7 @@ export default function NavbarNew() {
     { name: "Shop", href: "/products" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
-    { name: "Add Product", href: "/dashboard/addProduct" },
+    { name: "Dashboard", href: "/dashboard" },
   ]
 
   return (

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, redirect } from "next/navigation";
 import { toast } from "sonner";
+import axios from "axios";
 
 
 export default function Page() {
@@ -16,12 +17,11 @@ export default function Page() {
     price_sign: "",
     currency: "",
     //image_link: "",
-    product_link: "",
-    website_link: "",
     description: "",
     rating: "",
     category: "",
     product_type: "",
+    priority: "featured",
     tag_list: "",
     product_colors: "",
   });
@@ -34,22 +34,32 @@ export default function Page() {
 
   // image upload
   const handleImageChange = async (e) => {
-    setImageFile(e.target.files[0]);
-    const imgFormData = new FormData();
-    imgFormData.append("image", e.target.files[0]);
-    try {
-      const response = await axios.post(
-        `https://api.imgbb.com/1/upload?key=${
-          import.meta.env.VITE_imgbbApiKey
-        }`,
-        imgFormData
-      );
-      if (!response) return;
-      setImageUrl(response.data.data.display_url);
-    } catch (err) {
-      toast.error(err.message);
+  const file = e.target.files[0];
+  if (!file) return;
+
+  setImageFile(file);
+
+  const imgFormData = new FormData();
+  imgFormData.append("image", file);
+
+  try {
+    const response = await axios.post(
+      `https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`,
+      imgFormData
+    );
+
+    console.log("Image upload response:", response);
+
+    if (response?.data?.data?.display_url) {
+      setUpdatedImageUrl(response.data.data.display_url);
+    } else {
+      toast.error("Failed to get uploaded image URL");
     }
-  };
+  } catch (err) {
+    toast.error(err.message);
+  }
+};
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -67,6 +77,7 @@ export default function Page() {
         colour_name: color.split("|")[1]?.trim(),
       })),
     };
+    console.log("Submitting product:", payload);
 
     const res = await fetch("/api/products", {
       method: "POST",
@@ -90,12 +101,11 @@ export default function Page() {
     price_sign: "e.g. $",
     currency: "e.g. USD",
     //image_link: "Paste product image URL",
-    product_link: "Paste product detail link",
-    website_link: "Paste brand website",
     description: "Short description of the product",
     rating: "e.g. 4.5",
     category: "e.g. Lipstick",
     product_type: "e.g. Makeup",
+    priority: "Featured | Top | General",
     tag_list: "Comma separated tags (e.g. vegan, cruelty-free)",
     product_colors: "Format: #HEX | Name, e.g. #FF5733|Red, #000000|Black",
   };
@@ -118,7 +128,16 @@ export default function Page() {
             >
               {key.replace("_", " ")}:
             </label>
-            {key === "description" ? (
+            {key === "priority" ? <select id={key}
+                name={key}
+                value={formData[key]}
+                onChange={handleChange}
+                placeholder={placeholders[key]}
+                className="w-full border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 p-3 rounded-lg focus:ring-2 focus:ring-pink-400 focus:outline-none">
+              <option value="featured">Featured</option>
+              <option value="top">Top</option>
+              <option value="general">General</option>
+            </select> :key === "description" ? (
               <textarea
                 id={key}
                 name={key}
