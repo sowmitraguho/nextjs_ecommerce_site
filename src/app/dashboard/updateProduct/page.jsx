@@ -59,7 +59,7 @@ export default function ProductsPage() {
   const paginatedProducts = products.slice(startIndex, endIndex)
 
   return (
-    <div className="p-6 bg-gradient-to-br from-pink-300 via-pink-100 to-pink-50 rounded-md">
+    <div className="p-6  bg-pink-50 dark:bg-gray-900 rounded-md border border-pink-300  dark:border-gray-700">
       <h1 className="text-4xl text-pink-600 text-center font-bold mb-6">All Products</h1>
 
       {loading ? (

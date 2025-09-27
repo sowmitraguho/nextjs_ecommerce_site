@@ -2,12 +2,15 @@
 
 import ProductCard from "../ProductCard/ProductCard";
 import { useProduct } from "@/Context/ProductContext";
+import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 
 
 export default function FeaturedProducts() {
 
-  const { featuredProducts } = useProduct();
-
+  const { featuredProducts, loading } = useProduct();
+  // const res = await fetch("/api/products")
+  // const data = await res.json()
+  console.log('featured products ', featuredProducts);
   return (
     <section className="py-16 bg-gradient-to-b from-pink-50 to-white dark:from-gray-900 dark:to-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,12 +19,12 @@ export default function FeaturedProducts() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredProducts.map((product) => (<ProductCard key={product._id} product={product} />
-          ))}
+          {loading ? [1, 2, 3, 4].map((_, index) => <ProductCardSkeleton key={index} />) :
+            featuredProducts.map((product) => (<ProductCard key={product._id} product={product} />
+            ))}
         </div>
       </div>
     </section>
   )
 }
 
-       

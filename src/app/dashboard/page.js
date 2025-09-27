@@ -13,6 +13,7 @@ export default async function DashboardPage() {
     <div className="p-6">
       <h1 className="text-2xl font-bold">Welcome, {session.user.name} 🎉</h1>
       <p>Email: {session.user.email}</p>
+
     </div>
   );
 }

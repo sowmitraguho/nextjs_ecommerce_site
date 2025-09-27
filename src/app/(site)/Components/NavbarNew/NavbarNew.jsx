@@ -14,8 +14,8 @@ import Link from "next/link"
 import Cart from "../Cart/Cart"
 
 export default function NavbarNew() {
- const [open, setOpen] = useState(false);
-  
+  const [open, setOpen] = useState(false);
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Shop", href: "/products" },
@@ -117,7 +117,7 @@ export default function NavbarNew() {
                         text-gray-700 hover:text-pink-600
                         dark:text-gray-300 dark:hover:text-pink-400
                         transition-colors flex justify-between items-center"
-                        onClick={() => setOpen(!open)}
+                      onClick={() => setOpen(!open)}
                     >
                       {link.name} {link.submenu && <ChevronDown className="h-4 w-4" />}
                     </Link>

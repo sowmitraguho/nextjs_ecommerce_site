@@ -2,10 +2,11 @@
 
 import ProductCard from "../ProductCard/ProductCard";
 import { useProduct } from "@/Context/ProductContext";
+import ProductCardSkeleton from "../ProductCard/ProductCardSkeleton";
 
 
 export default function TopProducts() {
-  const { topProducts } = useProduct();
+  const { topProducts, loading } = useProduct();
 
 
   return (
@@ -16,8 +17,9 @@ export default function TopProducts() {
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {topProducts.map((product) => (<ProductCard key={product._id} product={product} />
-          ))}
+          {loading ? [1, 2, 3, 4].map((_, index) => <ProductCardSkeleton key={index} />) :
+            topProducts.map((product) => (<ProductCard key={product._id} product={product} />
+            ))}
         </div>
       </div>
     </section>

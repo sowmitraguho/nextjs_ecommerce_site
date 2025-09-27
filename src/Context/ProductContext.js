@@ -8,8 +8,10 @@ export function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
   const [featuredProducts, setFeaturedProducts] = useState([]);
   const [topProducts, setTopProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
       const fetchProducts = async () => {
+        setLoading(true);
         try {
           const res = await fetch("/api/products")
           const data = await res.json()
@@ -18,13 +20,15 @@ export function ProductProvider({ children }) {
           setTopProducts(data.topProducts);
         } catch (err) {
           console.error(err)
+        } finally {
+          setLoading(false);
         }
           }
           fetchProducts()
         }, []);
 
   return (
-    <ProductContext.Provider value={{ products, featuredProducts, topProducts }}>
+    <ProductContext.Provider value={{ products, featuredProducts, topProducts, loading }}>
       {children}
     </ProductContext.Provider>
   )
