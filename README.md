@@ -53,8 +53,8 @@ Password: ganesh123
 
 ### 1️⃣ Clone the Repository
 ```bash
-git clone https://github.com/your-username/makeup-shop.git
-cd makeup-shop
+git clone https://github.com/sowmitraguho/nextjs_ecommerce_site
+cd nextjs_ecommerce_site
 ````
 
 ### 2️⃣ Install Dependencies
@@ -87,17 +87,117 @@ Visit: [http://localhost:3000](http://localhost:3000)
 
 ## 📸 Screens & Routes
 
-- `/` → Home Page
-- `/shop` → Shop Page
-- `/about` → About Page
-- `/contact` → Contact Us Page
-- `/login` → Login Page
-- `/signup` → Signup Page
-- `/dashboard` → Admin Dashboard (Protected)
-
-  - `/dashboard/add-product` → Add Product
-  - `/dashboard/update-product/:id` → Update Product
-
+📦src
+ ┣ 📂app
+ ┃ ┣ 📂(site)
+ ┃ ┃ ┣ 📂about
+ ┃ ┃ ┃ ┗ 📜page.jsx
+ ┃ ┃ ┣ 📂api
+ ┃ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┃ ┣ 📂signin
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜route.js
+ ┃ ┃ ┃ ┃ ┣ 📂signup
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜route.js
+ ┃ ┃ ┃ ┃ ┗ 📂[...nextauth]
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜route.js
+ ┃ ┃ ┃ ┗ 📂products
+ ┃ ┃ ┃ ┃ ┣ 📂[id]
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜route.js
+ ┃ ┃ ┃ ┃ ┗ 📜route.js
+ ┃ ┃ ┣ 📂auth
+ ┃ ┃ ┃ ┣ 📂signin
+ ┃ ┃ ┃ ┃ ┣ 📂Components
+ ┃ ┃ ┃ ┃ ┃ ┣ 📜LoginForm.jsx
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜SocialLogin.jsx
+ ┃ ┃ ┃ ┃ ┗ 📜page.jsx
+ ┃ ┃ ┃ ┗ 📂signup
+ ┃ ┃ ┃ ┃ ┗ 📜page.jsx
+ ┃ ┃ ┣ 📂Components
+ ┃ ┃ ┃ ┣ 📂AddToCartButton
+ ┃ ┃ ┃ ┃ ┗ 📜AddToCartButton.jsx
+ ┃ ┃ ┃ ┣ 📂Buttons
+ ┃ ┃ ┃ ┃ ┣ 📜CardButton.jsx
+ ┃ ┃ ┃ ┃ ┣ 📜HeroButton.jsx
+ ┃ ┃ ┃ ┃ ┗ 📜HeroButtonOutline.jsx
+ ┃ ┃ ┃ ┣ 📂Cart
+ ┃ ┃ ┃ ┃ ┗ 📜Cart.jsx
+ ┃ ┃ ┃ ┣ 📂FeaturedProducts
+ ┃ ┃ ┃ ┃ ┗ 📜FeaturedProducts.jsx
+ ┃ ┃ ┃ ┣ 📂Footer
+ ┃ ┃ ┃ ┃ ┗ 📜Footer.jsx
+ ┃ ┃ ┃ ┣ 📂HeroSection
+ ┃ ┃ ┃ ┃ ┗ 📜HeroSection.jsx
+ ┃ ┃ ┃ ┣ 📂InviteForRegistration
+ ┃ ┃ ┃ ┃ ┗ 📜InviteForRegistration.jsx
+ ┃ ┃ ┃ ┣ 📂NavbarNew
+ ┃ ┃ ┃ ┃ ┗ 📜NavbarNew.jsx
+ ┃ ┃ ┃ ┣ 📂ProductCard
+ ┃ ┃ ┃ ┃ ┣ 📜DashboardCard.jsx
+ ┃ ┃ ┃ ┃ ┣ 📜ProductCard.jsx
+ ┃ ┃ ┃ ┃ ┗ 📜ProductCardSkeleton.jsx
+ ┃ ┃ ┃ ┣ 📂ThemeToggler
+ ┃ ┃ ┃ ┃ ┗ 📜ThemeToggler.jsx
+ ┃ ┃ ┃ ┣ 📂TopProducts
+ ┃ ┃ ┃ ┃ ┗ 📜TopProducts.jsx
+ ┃ ┃ ┃ ┗ 📂UserMenu
+ ┃ ┃ ┃ ┃ ┗ 📜UserMenu.jsx
+ ┃ ┃ ┣ 📂contact
+ ┃ ┃ ┃ ┗ 📜page.jsx
+ ┃ ┃ ┣ 📂products
+ ┃ ┃ ┃ ┣ 📂Components
+ ┃ ┃ ┃ ┃ ┗ 📜ProductCard.jx
+ ┃ ┃ ┃ ┣ 📂[id]
+ ┃ ┃ ┃ ┃ ┣ 📂Components
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜ProductDetailsCard.jsx
+ ┃ ┃ ┃ ┃ ┗ 📜page.jsx
+ ┃ ┃ ┃ ┗ 📜page.jsx
+ ┃ ┃ ┣ 📂register
+ ┃ ┃ ┣ 📜layout.js
+ ┃ ┃ ┗ 📜page.js
+ ┃ ┣ 📂dashboard
+ ┃ ┃ ┣ 📂addProduct
+ ┃ ┃ ┃ ┗ 📜page.jsx
+ ┃ ┃ ┣ 📂updateProduct
+ ┃ ┃ ┃ ┣ 📂[id]
+ ┃ ┃ ┃ ┃ ┗ 📜page.jsx
+ ┃ ┃ ┃ ┗ 📜page.jsx
+ ┃ ┃ ┣ 📂UserCart
+ ┃ ┃ ┃ ┗ 📜page.jsx
+ ┃ ┃ ┣ 📜layout.js
+ ┃ ┃ ┗ 📜page.js
+ ┃ ┣ 📜auth.js
+ ┃ ┣ 📜favicon.ico
+ ┃ ┗ 📜globals.css
+ ┣ 📂components
+ ┃ ┣ 📂ThemeProvider
+ ┃ ┃ ┗ 📜ThemeProvider.jsx
+ ┃ ┗ 📂ui
+ ┃ ┃ ┣ 📜avatar.jsx
+ ┃ ┃ ┣ 📜badge.jsx
+ ┃ ┃ ┣ 📜button.jsx
+ ┃ ┃ ┣ 📜card.jsx
+ ┃ ┃ ┣ 📜dropdown-menu.jsx
+ ┃ ┃ ┣ 📜input.jsx
+ ┃ ┃ ┣ 📜label.jsx
+ ┃ ┃ ┣ 📜menubar.jsx
+ ┃ ┃ ┣ 📜pagination.jsx
+ ┃ ┃ ┣ 📜separator.jsx
+ ┃ ┃ ┣ 📜sheet.jsx
+ ┃ ┃ ┣ 📜sidebar.jsx
+ ┃ ┃ ┣ 📜skeleton.jsx
+ ┃ ┃ ┣ 📜sonner.jsx
+ ┃ ┃ ┣ 📜table.jsx
+ ┃ ┃ ┗ 📜tooltip.jsx
+ ┣ 📂Context
+ ┃ ┣ 📜CartContext.js
+ ┃ ┣ 📜ProductContext.js
+ ┃ ┗ 📜SessionProvider.js
+ ┣ 📂hooks
+ ┃ ┗ 📜use-mobile.js
+ ┗ 📂lib
+ ┃ ┣ 📜auth.js
+ ┃ ┣ 📜mongodb.js
+ ┃ ┗ 📜utils.js
 ---
 
 ## 🔑 Admin Credentials
