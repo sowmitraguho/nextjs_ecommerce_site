@@ -1,14 +1,19 @@
+Got it ✅ I’ve cleaned up your README, fixed formatting issues, improved clarity, and made it more professional while keeping everything you wanted.
+
+Here’s the rewritten `README.md`:
+
 ```markdown
 # 💄 Makeup Shop – E-Commerce Website
 
-This is a full-stack E-Commerce Makeup Shop Website built with Next.js, JavaScript, TailwindCSS, and ShadCN UI.  
+This is a full-stack E-Commerce Makeup Shop Website built with Next.js, JavaScript, TailwindCSS, and ShadCN UI.
+
 The project has two main parts:
 
 1. Site – Public pages (Home, Shop, About, Contact Us).
 2. Dashboard – Admin-only pages (Dashboard Home, Add Product, Update Product).
 
 Authentication is implemented with NextAuth + JWT, supporting Email/Password and GitHub login.  
-Admins can manage products (add/update) via the dashboard, while normal users can browse the shop and view products.
+Admins can manage products (add/update) via the dashboard, while regular users can browse the shop and view products.
 
 ---
 
@@ -31,10 +36,10 @@ Admins can manage products (add/update) via the dashboard, while normal users ca
 
 - Implemented using NextAuth + JWT.
 - Login with Email/Password or GitHub.
-- Admin Access Only:
+- Admin account for full dashboard access:
 ```
 
-Email: ganesh@gmail.com
+Email: [ganesh@gmail.com](mailto:ganesh@gmail.com)
 Password: ganesh123
 
 ````
@@ -87,6 +92,9 @@ Visit: [http://localhost:3000](http://localhost:3000)
 
 ## 📸 Screens & Routes
 
+### Project Structure
+
+```
 📦src
  ┣ 📂app
  ┃ ┣ 📂(site)
@@ -145,7 +153,7 @@ Visit: [http://localhost:3000](http://localhost:3000)
  ┃ ┃ ┃ ┗ 📜page.jsx
  ┃ ┃ ┣ 📂products
  ┃ ┃ ┃ ┣ 📂Components
- ┃ ┃ ┃ ┃ ┗ 📜ProductCard.jx
+ ┃ ┃ ┃ ┃ ┗ 📜ProductCard.jsx
  ┃ ┃ ┃ ┣ 📂[id]
  ┃ ┃ ┃ ┃ ┣ 📂Components
  ┃ ┃ ┃ ┃ ┃ ┗ 📜ProductDetailsCard.jsx
@@ -198,6 +206,8 @@ Visit: [http://localhost:3000](http://localhost:3000)
  ┃ ┣ 📜auth.js
  ┃ ┣ 📜mongodb.js
  ┃ ┗ 📜utils.js
+```
+
 ---
 
 ## 🔑 Admin Credentials
@@ -224,10 +234,16 @@ npm start
 
 ## 🤝 Contributing
 
-Feel free to fork this repo, open issues, and submit pull requests. Contributions are always welcome.
+Contributions are welcome!
+Feel free to fork this repo, open issues, and submit pull requests.
 
 ---
 
+## 📜 License
+
+This project is free.
+
 ```
+
 
 ```
