@@ -1,13 +1,13 @@
 ```markdown
 # 💄 Makeup Shop – E-Commerce Website
 
-This is a full-stack **E-Commerce Makeup Shop Website** built with **Next.js, JavaScript, TailwindCSS, and ShadCN UI**.  
-The project has **two main parts**:
+This is a full-stack E-Commerce Makeup Shop Website built with Next.js, JavaScript, TailwindCSS, and ShadCN UI.  
+The project has two main parts:
 
-1. **Site** – Public pages (Home, Shop, About, Contact Us).
-2. **Dashboard** – Admin-only pages (Dashboard Home, Add Product, Update Product).
+1. Site – Public pages (Home, Shop, About, Contact Us).
+2. Dashboard – Admin-only pages (Dashboard Home, Add Product, Update Product).
 
-Authentication is implemented with **NextAuth + JWT**, supporting **Email/Password** and **GitHub login**.  
+Authentication is implemented with NextAuth + JWT, supporting Email/Password and GitHub login.  
 Admins can manage products (add/update) via the dashboard, while normal users can browse the shop and view products.
 
 ---
@@ -16,22 +16,22 @@ Admins can manage products (add/update) via the dashboard, while normal users ca
 
 ### 🛍️ Site
 
-- Responsive **Home page** showcasing featured products.
-- **Shop page** to browse all available makeup items.
-- **About page** describing the brand.
-- **Contact Us page** for customer support.
+- Responsive Home page showcasing featured products.
+- Shop page to browse all available makeup items.
+- About page describing the brand.
+- Contact Us page for customer support.
 
 ### 🖥️ Dashboard (Admin only)
 
-- **Dashboard Home page** overview.
-- **Add Product page** with image upload (via **imgbb**).
-- **Update Product page** for modifying product details.
+- Dashboard Home page overview.
+- Add Product page with image upload (via imgbb).
+- Update Product page for modifying product details.
 
 ### 🔐 Authentication
 
-- Implemented using **NextAuth** + **JWT**.
-- Login with **Email/Password** or **GitHub**.
-- **Admin Access Only**:
+- Implemented using NextAuth + JWT.
+- Login with Email/Password or GitHub.
+- Admin Access Only:
 ```
 
 Email: ganesh@gmail.com
@@ -40,12 +40,12 @@ Password: ganesh123
 ````
 
 ### 🛠️ Tech Stack
-- **Next.js** – Framework for React applications.
-- **JavaScript** – Core language.
-- **TailwindCSS** – Utility-first styling.
-- **ShadCN UI** – Modern UI components.
-- **NextAuth** – Authentication (JWT enabled).
-- **imgbb** – Product image hosting.
+- Next.js – Framework for React applications.
+- JavaScript – Core language.
+- TailwindCSS – Utility-first styling.
+- ShadCN UI – Modern UI components.
+- NextAuth – Authentication (JWT enabled).
+- imgbb – Product image hosting.
 
 ---
 
@@ -113,7 +113,7 @@ Password: ganesh123
 
 ## 📦 Deployment
 
-You can deploy this project easily on **Vercel**:
+You can deploy this project easily on Vercel:
 
 ```bash
 npm run build
