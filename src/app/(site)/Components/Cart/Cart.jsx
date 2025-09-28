@@ -17,7 +17,7 @@ export default function Cart() {
     <div className="relative">
       <Tooltip>
         <TooltipTrigger disabled={!session} className={session ? "cursor-pointer" : "cursor-not-allowed opacity-50"}>
-          <ShoppingCart onClick={() => {router.push("/dashboard/UserCart")}} className="w-6 h-6 cursor-pointer" />
+          <ShoppingCart onClick={() => {router.push("/UserCart")}} className="w-6 h-6 cursor-pointer" />
         </TooltipTrigger>
         <TooltipContent>
           <p>See Your Cart</p>

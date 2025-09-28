@@ -28,8 +28,9 @@ export default function UserMenu() {
         <Link href="/auth/signin">Login</Link>
       </Button>
     );
+  } else {
+    console.log("User session:", session.user.email);
   }
-
   // If logged in → Show Avatar with dropdown
   return (
     <DropdownMenu>
@@ -39,18 +40,20 @@ export default function UserMenu() {
             src={session.user?.image || "/default-avatar.png"}
             alt={session.user?.name || "User"}
           />
-          <AvatarFallback>
+          <AvatarFallback className={"bg-pink-200 text-pink-600 font-bold"}>
             {session.user?.name?.charAt(0).toUpperCase() || "U"}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-40">
+      <DropdownMenuContent align="end" className="w-40 bg-pink-50/70 font-semibold text-pink-600 ">
         <DropdownMenuItem className="cursor-pointer">
           {session.user?.email}
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
-          <Link href="/dashboard">Dashboard</Link>
-        </DropdownMenuItem>
+        {session.user?.email === "ganesh@gmail.com" && (
+          <DropdownMenuItem className="cursor-pointer">
+            <Link href="/dashboard">Dashboard</Link>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuItem
           onClick={() => signOut()}
           className="cursor-pointer text-red-500"
