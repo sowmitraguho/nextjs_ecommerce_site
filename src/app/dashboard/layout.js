@@ -1,16 +1,14 @@
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "../(site)/api/auth/[...nextauth]/route"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route"
 import { redirect } from "next/navigation"
 import { ThemeProvider } from "../../components/ThemeProvider/ThemeProvider"
 import MySessionProvider from "@/Context/SessionProvider"
 import { ProductProvider } from "@/Context/ProductContext"
 import { CartProvider } from "@/Context/CartContext"
 import "./../globals.css";
-import { Toaster } from "@/components/ui/sonner"
 import Link from "next/link"
 import { ModeToggle } from "../(site)/Components/ThemeToggler/ThemeToggler"
 import { Sidebar, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-//import { AppSidebar } from "@/components/app-sidebar"
 
 export default async function DashboardLayout({ children }) {
   const session = await getServerSession(authOptions)
@@ -78,7 +76,7 @@ export default async function DashboardLayout({ children }) {
                       </aside>
                     </Sidebar>
                     {/* Main content */}
-                    <main className="p-6 w-full min-w-[1100px] max-w-7xl mx-auto">
+                    <main className="w-full min-w-[1100px] max-w-7xl mx-auto">
                       <SidebarTrigger />
                       {children}
                     </main>

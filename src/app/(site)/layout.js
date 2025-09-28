@@ -4,7 +4,7 @@ import { ThemeProvider } from "../../components/ThemeProvider/ThemeProvider";
 import Footer from "./Components/Footer/Footer";
 import { Toaster } from "@/components/ui/sonner"
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import NavbarNew from "./Components/NavbarNew/NavbarNew";
 import { ProductProvider } from "@/Context/ProductContext";
 import { CartProvider } from "@/Context/CartContext";

@@ -48,14 +48,14 @@ export default function UserMenu() {
         <DropdownMenuItem className="cursor-pointer">
           {session.user?.email}
         </DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">
+          <Link href="/dashboard">Dashboard</Link>
+        </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => signOut()}
           className="cursor-pointer text-red-500"
         >
           Logout
-        </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
-          <Link href="/dashboard">Dashboard</Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

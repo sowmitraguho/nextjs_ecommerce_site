@@ -13,12 +13,12 @@ import {
 import { useRouter } from 'next/navigation'
 import ProductCard from "../Components/ProductCard/ProductCard"
 
-const PRODUCTS_PER_PAGE = 10
+const PRODUCTS_PER_PAGE = 12
 
 export default function MakeupPage() {
   const [products, setProducts] = useState([])
   const [categories, setCategories] = useState([])
-  const [activeCategory, setActiveCategory] = useState("")
+  const [activeCategory, setActiveCategory] = useState("All")
   const [currentPage, setCurrentPage] = useState(1)
   const [mounted, setMounted] = useState(false)
   const [search, setSearch] = useState("")
@@ -30,12 +30,12 @@ export default function MakeupPage() {
       try {
         const res = await fetch("/api/products")
         const data = await res.json()
-        console.log('data', data);
+        //console.log('data', data);
         setProducts(data.products)
 
         const uniqueCategories = [...new Set(data.products.map(p => p.category).filter(Boolean))]
         setCategories(['All', ...uniqueCategories])
-        setActiveCategory(uniqueCategories[0] || "")
+        //setActiveCategory(uniqueCategories[0] || "")
       } catch (err) {
         console.error(err)
       }
@@ -47,11 +47,11 @@ export default function MakeupPage() {
 
   // Filter by category and search
   const filteredProducts = products.filter(
-  p =>
-    (activeCategory === "All" || p.category === activeCategory) &&
-    (p.name.toLowerCase().includes(search.toLowerCase()) ||
-      (p.brand && p.brand.toLowerCase().includes(search.toLowerCase())))
-)
+    p =>
+      (activeCategory === "All" || p.category === activeCategory) &&
+      (p.name.toLowerCase().includes(search.toLowerCase()) ||
+        (p.brand && p.brand.toLowerCase().includes(search.toLowerCase())))
+  )
 
   // Pagination logic
   const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE)
@@ -107,7 +107,7 @@ export default function MakeupPage() {
 
       {/* --- Products --- */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
-        {paginatedProducts.map(product => ( <ProductCard key={product._id} product={product} />
+        {paginatedProducts.map(product => (<ProductCard key={product._id} product={product} />
         ))}
       </div>
 
