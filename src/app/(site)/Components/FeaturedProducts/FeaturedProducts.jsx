@@ -10,7 +10,7 @@ export default function FeaturedProducts() {
   const { featuredProducts, loading } = useProduct();
   // const res = await fetch("/api/products")
   // const data = await res.json()
-  console.log('featured products ', featuredProducts);
+  //console.log('featured products ', featuredProducts);
   return (
     <section className="py-16 bg-gradient-to-b from-pink-50 to-white dark:from-gray-900 dark:to-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -22,7 +22,7 @@ export default function UserMenu() {
 
   // If not logged in → Show Login Button
   if (!session) {
-    console.log("User not logged in", session);
+    //console.log("User not logged in", session);
     return (
       <Button variant="outline">
         <Link href="/auth/signin">Login</Link>
@@ -54,8 +54,10 @@ export default function UserMenu() {
         >
           Logout
         </DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">
+          <Link href="/dashboard">Dashboard</Link>
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 }
- 
