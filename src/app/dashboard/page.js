@@ -26,6 +26,7 @@ import DashboardCard from './dashboard-components/DashboardCard';
 import SalesGraph from './dashboard-components/SalesGraph';
 import RecentOrders from './dashboard-components/RecentOrders';
 
+
 // --- MOCK DATA STRUCTURES ---
 const mockKpiData = {
   totalRevenue: 45231.89,
@@ -52,30 +53,7 @@ const mockOrdersData = [
   { id: '#1004', customer: 'Emma Watson', status: 'Delivered', amount: 50.00, date: '2025-09-22' },
 ];
 
-// --- SHADCN-LIKE COMPONENTS ---
 
-// Card Component
-const Card = ({ title, value, description, icon: Icon, colorClass }) => (
-  <div
-    className="
-      flex flex-col space-y-3 rounded-xl border p-5 shadow-lg transition-all duration-300 
-      bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700
-      hover:shadow-2xl hover:scale-[1.02]
-    "
-  >
-    <div className="flex items-center justify-between">
-      <h3 className="text-sm font-medium text-gray-500 dark:text-gray-400">{title}</h3>
-      <Icon className={`h-5 w-5 ${colorClass}`} />
-    </div>
-    <div className="text-3xl font-bold text-gray-900 dark:text-gray-50">{value}</div>
-    <p className="text-xs text-gray-500 dark:text-gray-400">{description}</p>
-  </div>
-);
-
-// Sales Graph Placeholder (using simple div bars)
-
-
-// Recent Orders Table
 
 
 // --- MAIN DASHBOARD COMPONENT ---
