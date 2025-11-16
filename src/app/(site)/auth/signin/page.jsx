@@ -10,40 +10,7 @@ import { signIn } from "next-auth/react";
 import LoginForm from "./Components/LoginForm";
 
 export default function SignIn() {
-  // const [form, setForm] = useState({ email: "", password: "" });
-  // const [error, setError] = useState("");
-  // const [loading, setLoading] = useState(false);
-  // const router = useRouter();
-  
-
-  // const handleChange = (e) => {
-  //   setForm({ ...form, [e.target.id]: e.target.value });
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   console.log(form);
-  //   setLoading(true);
-  //   setError("");
-  //   const { email, password } = form;
-  //   try {
-  //     const res = await signIn("credentials", {
-  //     redirect: false, 
-  //     email,
-  //     password,
-  //   });
-  //     if (res.error) {
-  //     setError(res.error);
-  //   } else {
-      
-  //     router.push("/"); 
-  //   }
-  // } catch (err) {
-  //   console.error("Signin error:", err);
-  // } finally {
-  //   setLoading(false);
-  // }
-  // };
+ 
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-pink-100 via-pink-50 to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">

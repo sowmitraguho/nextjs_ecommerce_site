@@ -9,8 +9,15 @@ import { useRouter } from "next/navigation";
 import { FaCartShopping } from "react-icons/fa6";
 
 export default function UserCart() {
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, updateCartItemQuantity } = useCart();
   const router = useRouter();
+
+  const handleDecreaseQuantity = (item) => {
+    updateCartItemQuantity(item.product._id, item.quantity - 1);
+  };
+  const handleIncreaseQuantity = (item) => {
+    updateCartItemQuantity(item.product._id, item.quantity + 1);
+  };
 
   return (
     <div className="p-6">
@@ -27,14 +34,21 @@ export default function UserCart() {
               <CardContent className="flex flex-col gap-4 justify-between px-4">
                 <div className="flex items-center gap-4">
                   <img
-                    src={item.image_link}
+                    src={item.product.image_link}
                     alt={item.name}
                     className="w-20 h-20 object-cover rounded-xl"
                   />
                   <div>
-                    <h2 className="font-semibold text-gray-800 dark:text-gray-200">{item.name}</h2>
-                    <p className="text-gray-600 dark:text-gray-400">{item.price}</p>
+                    <h2 className="font-semibold text-gray-800 dark:text-gray-200">{item.product.name}</h2>
+                    <p className="text-gray-600 dark:text-gray-400">Price: {item.product.price}</p>
+                    <p className="text-gray-600 dark:text-gray-400">Quantity: {item.quantity}</p>
+                    <p className="text-gray-600 dark:text-gray-400">Total: ${(parseFloat(item.product.price.replace('$', '')) * item.quantity).toFixed(2)}</p>
                   </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button onClick={() => handleDecreaseQuantity(item)}> - </Button>
+                  <p>Quantity: {item.quantity}</p>
+                  <Button onClick={() => handleIncreaseQuantity(item)}> + </Button>
                 </div>
                 <div className="flex flex-row flex-wrap gap-2">
                   <Button
@@ -46,7 +60,7 @@ export default function UserCart() {
                   </Button>
                   <Button
                     //variant="destructive"
-                    onClick={() => removeFromCart(item._id)}
+                    onClick={() => removeFromCart(item.product._id)}
                     className="bg-red-500 hover:bg-red-600 text-white font-medium"
                   >
                     Remove
@@ -58,7 +72,6 @@ export default function UserCart() {
                   >
                     Pay
                   </Button>
-
                 </div>
               </CardContent>
             </Card>
