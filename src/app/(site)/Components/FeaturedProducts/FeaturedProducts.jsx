@@ -12,7 +12,7 @@ export default function FeaturedProducts() {
   // const data = await res.json()
   //console.log('featured products ', featuredProducts);
   return (
-    <section className="py-16 bg-gradient-to-b from-pink-50 to-white dark:from-gray-900 dark:to-gray-950">
+    <section className="py-16 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-r from-pink-300 via-pink-50 to-pink-300 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-left text-pink-600 dark:text-pink-400 mb-12">
           Featured Products
