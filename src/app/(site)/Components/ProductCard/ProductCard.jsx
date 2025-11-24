@@ -1,4 +1,3 @@
-//'use client'
 
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import React from 'react'
@@ -7,7 +6,6 @@ import CardButton from '../Buttons/CardButton';
 import { Star } from 'lucide-react';
 
 export default function ProductCard({ product }) {
-  //console.log(product)
   const rating = product.rating || 4.5;
   return (
     <Card key={product.id} className="flex flex-col rounded-2xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 dark:bg-gray-800">
@@ -17,6 +15,7 @@ export default function ProductCard({ product }) {
           alt={product.name}
           className="rounded-t-2xl h-56 w-full object-cover -mt-6"
         />
+
       </CardHeader>
       <CardContent className="px-4 flex-1 -mt-4">
 

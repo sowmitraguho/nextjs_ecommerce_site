@@ -1,5 +1,3 @@
-"use client"
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -7,20 +5,20 @@ import { Heart, Sparkles, Users, Award, TrendingUp, Shield } from 'lucide-react'
 
 // Mock InviteForRegistration component
 const InviteForRegistration = () => (
-  <section className="py-16 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-r from-pink-500 to-pink-600 relative overflow-hidden">
-    <div className="absolute inset-0 bg-[url('https://img.freepik.com/premium-photo/set-decorative-cosmetics-brushes-black_106029-725.jpg')] bg-cover bg-center opacity-20"></div>
-    <div className="relative z-10 max-w-2xl mx-auto space-y-6">
-      <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-        Join Our Beauty Community
-      </h2>
-      <p className="text-pink-50 max-w-xl mx-auto mb-6">
-        Subscribe to get the latest updates on our products, exclusive deals, and beauty tips delivered to your inbox.
-      </p>
-      <Button className="bg-white text-pink-600 hover:bg-pink-50 rounded-full px-8 py-3 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
-        Subscribe Now
-      </Button>
-    </div>
-  </section>
+    <section className="py-16 px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-r from-pink-500 to-pink-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://img.freepik.com/premium-photo/set-decorative-cosmetics-brushes-black_106029-725.jpg')] bg-cover bg-center opacity-20"></div>
+        <div className="relative z-10 max-w-2xl mx-auto space-y-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+                Join Our Beauty Community
+            </h2>
+            <p className="text-pink-50 max-w-xl mx-auto mb-6">
+                Subscribe to get the latest updates on our products, exclusive deals, and beauty tips delivered to your inbox.
+            </p>
+            <Button className="bg-white text-pink-600 hover:bg-pink-50 rounded-full px-8 py-3 font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all">
+                Subscribe Now
+            </Button>
+        </div>
+    </section>
 );
 
 export default function AboutPage() {
@@ -97,7 +95,7 @@ export default function AboutPage() {
             <section className="py-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        
+
                         <div className="relative group">
                             <div className="absolute -inset-4 bg-gradient-to-r from-pink-400 to-pink-600 rounded-3xl blur-2xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
                             <img
@@ -112,11 +110,11 @@ export default function AboutPage() {
                                 <TrendingUp className="w-4 h-4 text-pink-600 dark:text-pink-400" />
                                 <span className="text-pink-700 dark:text-pink-300 font-semibold text-sm">EST. 2020</span>
                             </div>
-                            
+
                             <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
                                 Where It All <span className="bg-gradient-to-r from-pink-500 to-pink-700 dark:from-pink-400 dark:to-pink-600 bg-clip-text text-transparent">Began</span>
                             </h2>
-                            
+
                             <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                                 <p>
                                     What started as a simple dream has blossomed into a thriving beauty destination trusted by thousands. We began with a clear vision: <strong className="text-pink-600 dark:text-pink-400">make high-quality, cruelty-free makeup accessible to everyone.</strong>
@@ -180,17 +178,17 @@ export default function AboutPage() {
             <section className="py-16 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        
+
                         <div className="order-2 lg:order-1 space-y-6">
                             <div className="inline-flex items-center gap-2 bg-pink-100 dark:bg-pink-900/30 rounded-full px-4 py-2">
                                 <Shield className="w-4 h-4 text-pink-600 dark:text-pink-400" />
                                 <span className="text-pink-700 dark:text-pink-300 font-semibold text-sm">OUR MISSION</span>
                             </div>
-                            
+
                             <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
                                 Inspiring Confidence <span className="bg-gradient-to-r from-pink-500 to-pink-700 dark:from-pink-400 dark:to-pink-600 bg-clip-text text-transparent">Through Beauty</span>
                             </h2>
-                            
+
                             <div className="space-y-4 text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
                                 <p>
                                     We exist to <strong className="text-pink-600 dark:text-pink-400">inspire confidence through beauty.</strong> Every product we offer is chosen with care, ensuring it's cruelty-free, high-performance, and designed to help you express your authentic self.
